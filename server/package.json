@@ -7,6 +7,7 @@
     "dev": "nodemon --watch src --exec babel-watch ./index.js",
     "watch": "babel-watch ./index.js",
     "build": "babel server --out-dir lib",
+    "pm2-start": "pm2 start ./index.js --interpreter ./node_modules/.bin/babel-node --name dictionary --watch",
     "postinstall": "node-prune"
   },
   "keywords": [],
@@ -14,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "chinese-conv": "^1.0.1",
     "compression": "^1.7.2",
     "express": "^4.16.3",
     "readline-specific": "^1.0.4"
