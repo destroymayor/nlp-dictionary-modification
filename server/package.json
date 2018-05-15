@@ -18,6 +18,7 @@
     "chinese-conv": "^1.0.1",
     "compression": "^1.7.2",
     "express": "^4.16.3",
+    "nodejieba": "^2.2.6",
     "readline-specific": "^1.0.4"
   },
   "devDependencies": {
