@@ -20,12 +20,26 @@ export default async app => {
     });
   });
 
+  // 分詞
   app.get("/ExtensionIssuesJiebaCut", (req, res) => {
+    nodejieba.load({
+      dict: path.join(__dirname, "../../static/dict.txt")
+    });
     const value = req.query.value;
-
     res.json(nodejieba.tag(value));
   });
 
+  //修改後分詞
+  app.get("/ExtensionIssuesJiebaCutUpdate", (req, res) => {
+    nodejieba.load({
+      dict: path.join(__dirname, "../../static/dict.txt"),
+      userDict: path.join(__dirname, "../../static/new_dictVerb.txt")
+    });
+    const value = req.query.value;
+    res.json(nodejieba.tag(value));
+  });
+
+  //名詞新增
   app.get("/JiebaWordModificationNoun", (req, res) => {
     const value = req.query.value;
     fs.appendFile(path.join(__dirname, "../../static/new_dictNoun.txt"), value + " n\n", err => {
@@ -37,6 +51,7 @@ export default async app => {
     });
   });
 
+  //動詞新增
   app.get("/JiebaWordModificationVerb", (req, res) => {
     const value = req.query.value;
     fs.appendFile(path.join(__dirname, "../../static/new_dictVerb.txt"), value + " v\n", err => {

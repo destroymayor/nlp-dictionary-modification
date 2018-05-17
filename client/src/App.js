@@ -1,7 +1,6 @@
 import React from "react";
 
 import "./App.css";
-
 import Cut from "./page/Cut";
 
 class App extends React.PureComponent {

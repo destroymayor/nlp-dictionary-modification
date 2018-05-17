@@ -13,7 +13,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postbuild": "rimraf build/**/*.map",
+    "postinstall": "node-prune"
+
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",

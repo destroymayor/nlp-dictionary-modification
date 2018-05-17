@@ -8,7 +8,7 @@ const app = express();
 app.use(compression());
 app.use(express.static(path.join(__dirname, "../client/build")));
 
-router(app); // load router config
+router(app);
 
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));

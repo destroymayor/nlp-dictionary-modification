@@ -1,3 +1,35 @@
 .Cut-App {
     margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.Cut-App-item {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+
+.Cut-App-item-child {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+.Cut-result {
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+}
+
+.Cut-result-item {
+    margin-right: 20px;
+}
+
+.Cut-result-item ul {
+    padding: 5px;
+}
+
+.Cut-result-item ul li {
+    margin: 5px;
 }
