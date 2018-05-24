@@ -5,8 +5,8 @@
   "proxy": "http://localhost:5000",
   "dependencies": {
     "antd": "^3.5.1",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0",
     "react-scripts": "1.1.4"
   },
   "scripts": {
@@ -16,7 +16,6 @@
     "eject": "react-scripts eject",
     "postbuild": "rimraf build/**/*.map",
     "postinstall": "node-prune"
-
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",

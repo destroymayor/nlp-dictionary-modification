@@ -76,6 +76,7 @@ class Cut extends Component {
     fetch("/ExtensionIssuesJiebaCut?value=" + value)
       .then(res => res.json())
       .then(result => {
+        console.log(result);
         result.forEach(value => {
           this.state.WordModificationList.push(value.word);
           this.setState({ JiebaWordModificationCutFetchState: true });
