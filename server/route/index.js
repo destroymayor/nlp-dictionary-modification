@@ -1,8 +1,9 @@
-import dictionary from "./dictionary";
-import nodejieba from "./jiebaCut";
+const dictionary = require("./dictionary");
+const nodejieba = require("./jiebaCut");
+const dictSynonym = require("./dictSynonym");
 
-export default app => {
-  [dictionary, nodejieba].forEach(router => {
+module.exports = app => {
+  [dictionary, nodejieba, dictSynonym].forEach(router => {
     router(app);
   });
 };

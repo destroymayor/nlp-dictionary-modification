@@ -1,8 +1,8 @@
-import rl from "readline-specific";
-import fs from "fs";
-import path from "path";
+const rl = require("readline-specific");
+const fs = require("fs");
+const path = require("path");
 
-export default async app => {
+module.exports = app => {
   app.get("/dictionary", (req, res) => {
     const value = parseInt(req.query.value, 10);
 

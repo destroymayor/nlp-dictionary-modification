@@ -1,8 +1,8 @@
-import nodejieba from "nodejieba";
-import fs from "fs";
-import path from "path";
+const nodejieba = require("nodejieba");
+const fs = require("fs");
+const path = require("path");
 
-export default async app => {
+module.exports = app => {
   app.get("/ExtensionIssuesList", (req, res) => {
     fs.readFile(path.join(__dirname, "../../static/QA.json"), "utf-8", (err, data) => {
       if (err) throw err;
