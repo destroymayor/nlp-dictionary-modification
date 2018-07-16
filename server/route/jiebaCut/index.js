@@ -40,9 +40,12 @@ module.exports = app => {
   });
 
   //名詞新增
-  app.get("/JiebaWordModificationNoun", (req, res) => {
+  app.get("/JiebaWordModificationNounAndVerb", (req, res) => {
     const value = req.query.value;
-    fs.appendFile(path.join(__dirname, "../../static/new_dictNoun.txt"), value + " n\n", err => {
+    const Noun = value.replace(new RegExp("`", "g"), " n\n");
+    const Verb = Noun.replace(new RegExp("@", "g"), " v\n");
+
+    fs.appendFile(path.join(__dirname, "../../static/new_dict.txt"), Verb, err => {
       if (err) {
         console.log(err);
         return res.json({ result: false });
@@ -51,15 +54,15 @@ module.exports = app => {
     });
   });
 
-  //動詞新增
-  app.get("/JiebaWordModificationVerb", (req, res) => {
-    const value = req.query.value;
-    fs.appendFile(path.join(__dirname, "../../static/new_dictVerb.txt"), value + " v\n", err => {
-      if (err) {
-        console.log(err);
-        return res.json({ result: false });
-      }
-      return res.json({ result: true });
-    });
-  });
+  // //動詞新增
+  // app.get("/JiebaWordModificationVerb", (req, res) => {
+  //   const value = req.query.value;
+  //   fs.appendFile(path.join(__dirname, "../../static/new_dictVerb.txt"), value + " v\n", err => {
+  //     if (err) {
+  //       console.log(err);
+  //       return res.json({ result: false });
+  //     }
+  //     return res.json({ result: true });
+  //   });
+  // });
 };

@@ -1,8 +1,6 @@
 const fs = require("fs");
 const path = require("path");
 
-const synonyms = require("node-synonyms");
-
 module.exports = app => {
   app.get("/Synonyms", (req, res) => {
     res.json({ state: "123" });

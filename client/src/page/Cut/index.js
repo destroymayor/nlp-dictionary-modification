@@ -5,7 +5,6 @@ import React, { Component } from "react";
 import "./index.css";
 
 const Option = Select.Option;
-const WordSelectionOption = Select.Option;
 const ExtensionIssuesListItemOption = Select.Option;
 
 class Cut extends Component {
@@ -87,25 +86,12 @@ class Cut extends Component {
 
   JiebaWordModification() {
     if (this.state.JiebaWordModificationText === "") return message.error("請輸入欲修改的詞");
-    if (this.state.WordSelection !== "") {
-      switch (this.state.WordSelection) {
-        case "noun":
-          this.JiebaWordModificationFetch("Noun");
-          break;
-        case "verb":
-          this.JiebaWordModificationFetch("Verb");
-          break;
-        default:
-          break;
-      }
-    } else {
-      message.error("請選擇欲修改的詞性");
-    }
+    this.JiebaWordModificationFetch();
   }
 
-  JiebaWordModificationFetch(value) {
+  JiebaWordModificationFetch() {
     this.setState({ WordModificationListUpdateState: true, WordModificationListUpdateCutState: false });
-    fetch("/JiebaWordModification" + value + "?value=" + this.state.JiebaWordModificationText)
+    fetch("/JiebaWordModificationNounAndVerb?value=" + this.state.JiebaWordModificationText)
       .then(res => res.json())
       .then(result => {
         if (result.result) {
@@ -128,22 +114,6 @@ class Cut extends Component {
 
   renderItem = () => (
     <div className="Cut-App-item">
-      <div className="Cut-App-item-child">
-        詞性選擇
-        <Select
-          style={{ width: 100 }}
-          notFoundContent={<Spin size="small" />}
-          onChange={value => {
-            this.setState({ WordSelection: value });
-          }}>
-          <WordSelectionOption key="noun" value="noun">
-            名詞
-          </WordSelectionOption>
-          <WordSelectionOption key="verb" value="verb">
-            動詞
-          </WordSelectionOption>
-        </Select>
-      </div>
       <div className="Cut-App-item-child">
         選擇類別
         <Select style={{ width: 300 }} notFoundContent={<Spin size="small" />} onChange={this.handleSelect}>
@@ -215,6 +185,8 @@ class Cut extends Component {
             }
           }}
         />
+        <br />
+        <div>可以多個詞當作輸入，請用[`]、[@]符號隔開(名詞後接[`]、動詞後接[@])，例如：客服`電話`沒接@</div>
         {this.renderCutResult()}
       </div>
     );
